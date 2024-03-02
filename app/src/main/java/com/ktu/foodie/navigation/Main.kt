@@ -25,6 +25,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ktu.foodie.navigation.tabs.Account
 import com.ktu.foodie.navigation.tabs.Discover
+import com.ktu.foodie.navigation.tabs.Favorites
 import com.ktu.foodie.navigation.tabs.Featured
 import com.ktu.foodie.navigation.tabs.Home
 import com.ktu.foodie.ui.theme.foodieGreen
@@ -50,6 +51,7 @@ fun Main() {
                     Tabs.Home,
                     Tabs.Featured,
                     Tabs.Discover,
+                    Tabs.Favorites,
                     Tabs.Account
                 ).forEachIndexed { index, item ->
                     NavigationBarItem(
@@ -91,6 +93,9 @@ fun Main() {
             }
             composable(Tabs.Discover.route) {
                 Discover()
+            }
+            composable(Tabs.Favorites.route) {
+                Favorites()
             }
             composable(Tabs.Account.route) {
                 Account()
