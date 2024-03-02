@@ -11,3 +11,6 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val foodieGreen = Color(0xFF45ada1)
+val foodieDarkGreen = Color(0XFF054242)
+val foodieLightGreen = Color(0xFF79d0c6)
+val lightBlue = Color(0xFFe7f9f6)
