@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.ktu.foodie.navigation.screens.Main
+import com.ktu.foodie.navigation.Main
 import com.ktu.foodie.ui.theme.FoodieTheme
 
 class MainActivity : ComponentActivity() {
