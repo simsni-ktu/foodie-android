@@ -1,5 +1,6 @@
 package com.ktu.foodie.ui.compoonents
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -26,9 +27,8 @@ fun TopBar(homeScreen: Boolean){
     Row(modifier = Modifier
         .fillMaxWidth()
         .height(64.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically){
-        Icon(painter = painterResource(id = R.drawable.ic_temp_logo), contentDescription = null, tint = foodieGreen)
+        Image(painter = painterResource(id = R.drawable.foodie_logo), contentDescription = null,)
         if(homeScreen) {
-            Spacer(modifier = Modifier.width(8.dp))
             Text("Foodie", fontWeight = FontWeight.Bold, color = foodieGreen, fontSize = 24.sp)
         }
     }
