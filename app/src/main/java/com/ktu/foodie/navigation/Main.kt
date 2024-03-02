@@ -1,4 +1,4 @@
-package com.ktu.foodie.navigation.screens
+package com.ktu.foodie.navigation
 
 import android.util.Log
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,10 +23,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.ktu.foodie.navigation.Tabs
 import com.ktu.foodie.navigation.tabs.Account
 import com.ktu.foodie.navigation.tabs.Discover
 import com.ktu.foodie.navigation.tabs.Featured
+import com.ktu.foodie.navigation.tabs.Home
 import com.ktu.foodie.ui.theme.foodieGreen
 
 @Composable
@@ -47,6 +47,7 @@ fun Main() {
                     .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp)),
             ) {
                 listOf(
+                    Tabs.Home,
                     Tabs.Featured,
                     Tabs.Discover,
                     Tabs.Account
@@ -79,9 +80,12 @@ fun Main() {
     ) { paddingValues ->
         NavHost(
             navController = navController,
-            startDestination = Tabs.Featured.route,
+            startDestination = Tabs.Home.route,
             modifier = Modifier.padding(paddingValues)
         ) {
+            composable(Tabs.Home.route){
+                Home()
+            }
             composable(Tabs.Featured.route) {
                 Featured()
             }
