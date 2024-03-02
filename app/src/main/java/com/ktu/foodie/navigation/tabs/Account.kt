@@ -5,10 +5,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.ktu.foodie.ui.compoonents.TopBar
 
 @Composable
 fun Account(){
     Column(modifier = Modifier.fillMaxSize()){
-        Text("Account")
+        TopBar(homeScreen = false)
+
     }
 }
