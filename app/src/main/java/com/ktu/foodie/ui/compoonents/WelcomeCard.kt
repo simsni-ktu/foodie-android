@@ -1,6 +1,7 @@
 package com.ktu.foodie.ui.compoonents
 
 import android.graphics.drawable.Icon
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -24,9 +26,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ktu.foodie.R
 import com.ktu.foodie.ui.theme.foodieGreen
 import com.ktu.foodie.ui.theme.lightBlue
 
@@ -36,8 +40,7 @@ fun WelcomeCard(username: String, title: String) {
         colors = CardDefaults.cardColors(
             containerColor = lightBlue
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
-        ,
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
         shape = RoundedCornerShape(24.dp),
     ) {
         Row(
@@ -54,7 +57,11 @@ fun WelcomeCard(username: String, title: String) {
             Column(modifier = Modifier
                 .weight(0.3F)
                 .fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-                Icon(Icons.Default.Face, contentDescription = null, modifier = Modifier.size(48.dp), Color.LightGray)
+                Image(
+                    painterResource(id = R.drawable.welcome_logo),
+                    contentDescription = null,
+
+                )
             }
         }
     }
