@@ -12,94 +12,86 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.ktu.foodie.navigation.tabs.Account
-import com.ktu.foodie.navigation.tabs.Discover
-import com.ktu.foodie.navigation.tabs.Favorites
-import com.ktu.foodie.navigation.tabs.Featured
-import com.ktu.foodie.navigation.tabs.Home
+import com.ktu.foodie.navigation.graphs.HomeNavGraph
 import com.ktu.foodie.ui.theme.foodieGreen
 
 @Composable
-fun Main() {
+fun Main(rootNavController: NavController) {
+    val bottomBarNavController = rememberNavController()
+    val tabs = listOf(Tabs.Home, Tabs.Featured, Tabs.Discover, Tabs.Favorites, Tabs.Account)
 
-    val navController = rememberNavController()
-    var selectedItemIndex by rememberSaveable {
-        mutableIntStateOf(0)
+    fun onTabChange(destination: String) {
+        bottomBarNavController.navigate(destination) {
+            popUpTo(bottomBarNavController.graph.findStartDestination().id) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
     }
 
     Scaffold(
         bottomBar = {
-            NavigationBar(
-                tonalElevation = 8.dp,
-                containerColor = foodieGreen,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp)),
-            ) {
-                listOf(
-                    Tabs.Home,
-                    Tabs.Featured,
-                    Tabs.Discover,
-                    Tabs.Favorites,
-                    Tabs.Account
-                ).forEachIndexed { index, item ->
-                    NavigationBarItem(
-                        selected = selectedItemIndex == index,
-                        onClick = {
-                            Log.e("item val", item.route)
-                            selectedItemIndex = index
-                            navController.navigate(item.route)
-                        },
-                        alwaysShowLabel = false,
-                        label = {
-                            Text(text = item.title, color = Color.White)
-                        },
-                        icon = {
-                            Icon(painter = painterResource(id = item.icon), null)
-                        },
-                        colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = Color.White,
-                            selectedTextColor = Color.White,
-                            unselectedIconColor = Color.White,
-                            unselectedTextColor = Color.White,
-                            indicatorColor = foodieGreen
-                        )
-                    )
-                }
-            }
+            BottomBar(
+                bottomBarNavController = bottomBarNavController,
+                tabs = tabs,
+                onTabChange = { onTabChange(it) })
         }
     ) { paddingValues ->
-        NavHost(
-            navController = navController,
-            startDestination = Tabs.Home.route,
+        HomeNavGraph(
+            bottomBarNavController = bottomBarNavController,
+            rootNavController = rootNavController,
             modifier = Modifier.padding(paddingValues)
-        ) {
-            composable(Tabs.Home.route){
-                Home()
-            }
-            composable(Tabs.Featured.route) {
-                Featured()
-            }
-            composable(Tabs.Discover.route) {
-                Discover()
-            }
-            composable(Tabs.Favorites.route) {
-                Favorites()
-            }
-            composable(Tabs.Account.route) {
-                Account()
-            }
+        )
+    }
+}
+
+@Composable
+fun BottomBar(
+    bottomBarNavController: NavController,
+    tabs: List<Tabs>,
+    onTabChange: (String) -> Unit
+) {
+    val navBackStackEntry by bottomBarNavController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
+    NavigationBar(
+        tonalElevation = 8.dp,
+        containerColor = foodieGreen,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp)),
+    ) {
+        tabs.forEachIndexed { index, item ->
+            NavigationBarItem(
+                selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
+                onClick = {
+                    onTabChange(item.route)
+                },
+                alwaysShowLabel = false,
+                label = {
+                    Text(text = item.title, color = Color.White)
+                },
+                icon = {
+                    Icon(painter = painterResource(id = item.icon), null)
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = Color.White,
+                    selectedTextColor = Color.White,
+                    unselectedIconColor = Color.White,
+                    unselectedTextColor = Color.White,
+                    indicatorColor = foodieGreen
+                )
+            )
         }
     }
 }
