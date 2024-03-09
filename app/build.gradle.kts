@@ -93,4 +93,8 @@ dependencies {
     //Moshi
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
 
+    //Shared prefs
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+
 }
