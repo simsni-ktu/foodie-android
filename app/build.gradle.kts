@@ -1,8 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id ("kotlin-kapt")
     id ("com.google.dagger.hilt.android")
+    id("org.jetbrains.kotlin.kapt")
     id("com.google.devtools.ksp")
 
 }
@@ -44,7 +44,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
     packaging {
         resources {
@@ -89,5 +89,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
-    
+
+    //Moshi
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
+
 }
