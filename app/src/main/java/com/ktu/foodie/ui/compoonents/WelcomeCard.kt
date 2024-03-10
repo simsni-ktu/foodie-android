@@ -35,7 +35,7 @@ import com.ktu.foodie.ui.theme.foodieGreen
 import com.ktu.foodie.ui.theme.lightBlue
 
 @Composable
-fun WelcomeCard(username: String, title: String) {
+fun WelcomeCard(title: String) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = lightBlue
@@ -50,7 +50,7 @@ fun WelcomeCard(username: String, title: String) {
                 .padding(horizontal = 16.dp, vertical = 24.dp)
         ) {
             Column(modifier = Modifier.weight(0.7F)) {
-                Text(text = "Hey, $username", fontWeight = FontWeight.Bold, fontSize = 24.sp)
+                Text(text = "Hey!", fontWeight = FontWeight.Bold, fontSize = 24.sp)
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(text = title, fontWeight = FontWeight.Medium, color = foodieGreen)
             }
