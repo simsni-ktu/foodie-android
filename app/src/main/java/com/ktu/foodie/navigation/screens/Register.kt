@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.ktu.foodie.navigation.Graph
 import com.ktu.foodie.navigation.Screens
 import com.ktu.foodie.ui.compoonents.Button
 import com.ktu.foodie.ui.compoonents.FoodieTextField
@@ -24,7 +22,7 @@ import com.ktu.foodie.ui.compoonents.TopBar
 import com.ktu.foodie.viewmodels.AuthViewModel
 
 @Composable
-fun Login(navController: NavController, authViewModel: AuthViewModel) {
+fun Register(navController: NavController, authViewModel: AuthViewModel){
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -38,23 +36,15 @@ fun Login(navController: NavController, authViewModel: AuthViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            FoodieTextField(value = email, placeholder = "email", password = false, onValueChange = { email = it })
+            FoodieTextField(value = email, placeholder = "email", password = false, onValueChange = {email = it})
             Spacer(modifier = Modifier.height(16.dp))
-            FoodieTextField(
-                value = password,
-                placeholder = "password",
-                password = true,
-                onValueChange = { password = it })
+            FoodieTextField(value = password, placeholder = "password", password = true, onValueChange = {password = it})
             Spacer(modifier = Modifier.height(16.dp))
-            Button(title = "Login", onClick = {
-                authViewModel.login(email = email, password = password, onSuccess = {
-                    navController.navigate(Graph.BOTTOM_NAVIGATION)
-                })
-
-            })
             Spacer(modifier = Modifier.height(8.dp))
             Button(title = "Register", onClick = {
-                navController.navigate(Screens.Register.route)
+                authViewModel.register(email = email, password = password, onSuccess = {
+                    navController.navigate(Screens.Login.route)
+                })
             })
         }
     }

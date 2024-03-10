@@ -53,7 +53,6 @@ fun Home() {
         ) {
             Spacer(modifier = Modifier.height(24.dp))
             WelcomeCard(
-                username = "Bob",
                 title = "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum!!"
             )
             Spacer(modifier = Modifier.height(16.dp))
