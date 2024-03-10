@@ -88,13 +88,21 @@ dependencies {
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     //Moshi
+    implementation("com.squareup.moshi:moshi:1.15.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
+
+    //Wire
+    implementation("com.squareup.wire:wire-runtime:4.9.3")
+    implementation("com.squareup.wire:wire-moshi-adapter:4.9.3")
 
     //Shared prefs
     implementation("androidx.datastore:datastore-preferences:1.0.0")
+
 
 
 }
