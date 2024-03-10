@@ -13,15 +13,20 @@ import com.ktu.foodie.navigation.tabs.Discover
 import com.ktu.foodie.navigation.tabs.Favorites
 import com.ktu.foodie.navigation.tabs.Featured
 import com.ktu.foodie.navigation.tabs.Home
+import com.ktu.foodie.viewmodels.AuthViewModel
 
 @Composable
-fun HomeNavGraph(bottomBarNavController: NavHostController, rootNavController: NavController, modifier: Modifier) {
+fun HomeNavGraph(
+    bottomBarNavController: NavHostController,
+    rootNavController: NavController,
+    modifier: Modifier
+) {
     NavHost(
         navController = bottomBarNavController,
         route = Graph.BOTTOM_NAVIGATION,
         startDestination = Tabs.Home.route,
         modifier = modifier
-    ){
+    ) {
         composable(Tabs.Home.route) {
             Home()
         }
