@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.ktu.foodie.ui.theme.foodieDarkGreen
 import com.ktu.foodie.ui.theme.foodieGreen
 
 @Composable
@@ -27,7 +28,7 @@ fun Button(
         enabled = enabled,
         shape = RoundedCornerShape(16.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = foodieGreen,
+            containerColor = if(enabled) foodieDarkGreen else Color.LightGray,
             contentColor = Color.White
         ),
     ) {

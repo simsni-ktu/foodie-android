@@ -54,16 +54,23 @@ fun Register(navController: NavController, authViewModel: AuthViewModel) {
                 placeholder = "Password",
                 password = true,
                 onValueChange = { password = it })
-            Column(modifier = Modifier
-                .weight(0.3F)
-                .fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+            Column(
+                modifier = Modifier
+                    .weight(0.3F)
+                    .fillMaxHeight(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
                 Image(
                     painterResource(id = R.drawable.welcome_logo),
                     contentDescription = null,
 
                     )
             }
-            Button(title = "Register", modifier = Modifier.fillMaxWidth(), onClick = {
+            Button(title = "Register",
+                modifier = Modifier.fillMaxWidth(),
+                enabled = email.isNotEmpty() && password.isNotEmpty(),
+                onClick = {
                 authViewModel.register(email = email, password = password, onSuccess = {
                     navController.navigate(Screens.Login.route)
                 })

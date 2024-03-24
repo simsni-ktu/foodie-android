@@ -71,6 +71,7 @@ fun Login(navController: NavController, authViewModel: AuthViewModel) {
                 title = "Login",
                 modifier = Modifier.fillMaxWidth(),
                 loading = authViewModel.loading.value,
+                enabled = email.isNotEmpty() && password.isNotEmpty(),
                 onClick = {
                     authViewModel.login(
                         email = email,
