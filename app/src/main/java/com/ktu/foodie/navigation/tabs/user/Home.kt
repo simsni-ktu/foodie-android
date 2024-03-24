@@ -41,38 +41,37 @@ import com.ktu.foodie.ui.theme.foodieGreen
 @Composable
 fun Home() {
 
-    val categories = listOf("Sweets", "Healthy", "Fruits", "Bakery", "Vegetarian", "Dairy", "Dairy", "Dairy")
+    val categories =
+        listOf("Sweets", "Healthy", "Fruits", "Bakery", "Vegetarian", "Dairy", "Dairy", "Dairy")
 
-    Column {
-        TopBar()
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(start = 16.dp, end = 16.dp)
-        ) {
-            Spacer(modifier = Modifier.height(24.dp))
-            WelcomeCard(
-                title = "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum!!"
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            CurrentOrder(allOrders = {})
-            Spacer(modifier = Modifier.height(16.dp))
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start) {
-                Text("Categories", fontWeight = FontWeight.Bold, color = foodieDarkGreen)
-            }
-            LazyVerticalGrid(
-                modifier = Modifier.heightIn(max = 1000.dp),
-                contentPadding = PaddingValues(vertical = 16.dp),
-                userScrollEnabled = false,
-                columns = GridCells.Fixed(2),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                content = {
-                    items(categories) { category ->
-                        CategoryCard(title = category)
-                    }
-                })
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(start = 16.dp, end = 16.dp)
+    ) {
+        Spacer(modifier = Modifier.height(24.dp))
+        WelcomeCard(
+            title = "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum!!"
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        CurrentOrder(allOrders = {})
+        Spacer(modifier = Modifier.height(16.dp))
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start) {
+            Text("Categories", fontWeight = FontWeight.Bold, color = foodieDarkGreen)
         }
+        LazyVerticalGrid(
+            modifier = Modifier.heightIn(max = 1000.dp),
+            contentPadding = PaddingValues(vertical = 16.dp),
+            userScrollEnabled = false,
+            columns = GridCells.Fixed(2),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            content = {
+                items(categories) { category ->
+                    CategoryCard(title = category)
+                }
+            })
     }
+
 }

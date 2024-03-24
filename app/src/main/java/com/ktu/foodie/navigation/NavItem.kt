@@ -18,7 +18,7 @@ sealed class NavItem(val title: String, @DrawableRes val icon: Int, val route: S
     data object Account : NavItem(title = "Account", icon = R.drawable.ic_account, route = "account")
 
     //RESTAURANT
-    data object MysteryBox : NavItem("Mystery box", icon = R.drawable.ic_shopping_bag, route = "mystery_box")
+    data object AddBox : NavItem("Add box", icon = R.drawable.ic_shopping_bag, route = "add_box")
 
     data object Product : NavItem("Products", icon = R.drawable.ic_products, route = "products")
 

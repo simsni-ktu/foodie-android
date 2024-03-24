@@ -23,7 +23,7 @@ object Graph {
     const val ROOT = "root_graph"
     const val AUTHENTICATION = "authentication_graph"
     const val BOTTOM_NAVIGATION = "tabs_graph"
-    const val CLIENT_NAVIGATION = "restaurant_navigation"
+    const val RESTAURANT_NAVIGATION = "restaurant_navigation"
 }
 
 
@@ -58,7 +58,7 @@ fun Navigation(authViewModel: AuthViewModel = hiltViewModel()) {
 //                    navController.navigate("?sdfsd=$id")
 //                }
             }
-            composable(route = Graph.CLIENT_NAVIGATION) {
+            composable(route = Graph.RESTAURANT_NAVIGATION) {
                 RestaurantMain(logout = { logout() })
             }
 
@@ -76,7 +76,7 @@ fun findStartDestination(user: User): String {
             true
         ) || user.role.equals(Role.ADMIN.name, true))
     ) {
-        destination = Graph.CLIENT_NAVIGATION
+        destination = Graph.RESTAURANT_NAVIGATION
     }
     return destination
 }

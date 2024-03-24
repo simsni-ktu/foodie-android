@@ -8,8 +8,7 @@ import androidx.compose.ui.Modifier
 import com.ktu.foodie.ui.compoonents.TopBar
 
 @Composable
-fun Featured(){
-    Column(modifier = Modifier.fillMaxSize()){
-        TopBar()
+fun Featured() {
+    Column(modifier = Modifier.fillMaxSize()) {
     }
 }

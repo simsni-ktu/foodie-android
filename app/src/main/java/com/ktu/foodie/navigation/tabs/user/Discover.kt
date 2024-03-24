@@ -16,7 +16,7 @@ import com.google.maps.android.compose.MapUiSettings
 import com.google.maps.android.compose.rememberCameraPositionState
 
 @Composable
-fun Discover(){
+fun Discover() {
     val uiSettings by remember { mutableStateOf(MapUiSettings()) }
 
     val properties by remember {

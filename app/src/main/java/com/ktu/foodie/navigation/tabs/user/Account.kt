@@ -13,17 +13,16 @@ import com.ktu.foodie.ui.compoonents.Button
 import com.ktu.foodie.ui.compoonents.TopBar
 
 @Composable
-fun Account(logout:() -> Unit){
-    Column {
-        TopBar()
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(start = 16.dp, end = 16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Button(title = "Logout", onClick = {logout()})
-        }
+fun Account(logout: () -> Unit) {
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(start = 16.dp, end = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(title = "Logout", onClick = { logout() })
     }
+
 }

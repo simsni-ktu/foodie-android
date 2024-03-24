@@ -18,24 +18,23 @@ import com.ktu.foodie.ui.compoonents.TopBar
 
 @Composable
 fun Favorites() {
-    Column {
-        TopBar()
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(start = 16.dp, end = 16.dp)
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(start = 16.dp, end = 16.dp)
+    ) {
+        Spacer(modifier = Modifier.height(16.dp))
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            userScrollEnabled = false,
+            modifier = Modifier.heightIn(max = 1000.dp)
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
-            LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                userScrollEnabled = false,
-                modifier = Modifier.heightIn(max = 1000.dp)
-            ) {
-                items(6) {
-                    RestaurantCard()
-                }
+            items(6) {
+                RestaurantCard()
             }
         }
     }
+
 }

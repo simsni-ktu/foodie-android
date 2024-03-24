@@ -6,8 +6,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.ktu.foodie.navigation.Graph
 import com.ktu.foodie.navigation.Screens
-import com.ktu.foodie.navigation.screens.Login
-import com.ktu.foodie.navigation.screens.Register
+import com.ktu.foodie.navigation.screens.auth.Login
+import com.ktu.foodie.navigation.screens.auth.Register
 import com.ktu.foodie.viewmodels.AuthViewModel
 
 fun NavGraphBuilder.authNavGraph(navController: NavController, authViewModel: AuthViewModel){

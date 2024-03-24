@@ -1,4 +1,4 @@
-package com.ktu.foodie.navigation.screens
+package com.ktu.foodie.navigation.screens.auth
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -27,7 +27,7 @@ import com.ktu.foodie.ui.compoonents.TopBar
 import com.ktu.foodie.viewmodels.AuthViewModel
 
 @Composable
-fun Register(navController: NavController, authViewModel: AuthViewModel) {
+fun Login(navController: NavController, authViewModel: AuthViewModel) {
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -54,20 +54,37 @@ fun Register(navController: NavController, authViewModel: AuthViewModel) {
                 placeholder = "Password",
                 password = true,
                 onValueChange = { password = it })
-            Column(modifier = Modifier
-                .weight(0.3F)
-                .fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+            Column(
+                modifier = Modifier
+                    .weight(0.3F)
+                    .fillMaxHeight(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
                 Image(
                     painterResource(id = R.drawable.welcome_logo),
                     contentDescription = null,
 
                     )
             }
-            Button(title = "Register", modifier = Modifier.fillMaxWidth(), onClick = {
-                authViewModel.register(email = email, password = password, onSuccess = {
-                    navController.navigate(Screens.Login.route)
+            Button(
+                title = "Login",
+                modifier = Modifier.fillMaxWidth(),
+                loading = authViewModel.loading.value,
+                onClick = {
+                    authViewModel.login(
+                        email = email,
+                        password = password,
+                        onSuccess = { destination ->
+                            navController.navigate(destination)
+                        })
+
                 })
+            Spacer(modifier = Modifier.height(8.dp))
+            Button(title = "Register", modifier = Modifier.fillMaxWidth(), onClick = {
+                navController.navigate(Screens.Register.route)
             })
         }
     }
 }
+

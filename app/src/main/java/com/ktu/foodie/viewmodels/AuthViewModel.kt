@@ -27,7 +27,7 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
                 is Resource.Success -> {
                     result.data?.let {
                         updateUserStore(it)
-                        onSuccess(if(it.role.equals(Role.USER.name, true)) Graph.BOTTOM_NAVIGATION else Graph.CLIENT_NAVIGATION)
+                        onSuccess(if(it.role.equals(Role.USER.name, true)) Graph.BOTTOM_NAVIGATION else Graph.RESTAURANT_NAVIGATION)
                         loading.value = false
                     }
                 }

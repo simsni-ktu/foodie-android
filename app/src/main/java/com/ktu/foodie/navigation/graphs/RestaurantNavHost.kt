@@ -8,6 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.ktu.foodie.navigation.Graph
 import com.ktu.foodie.navigation.NavItem
+import com.ktu.foodie.navigation.tabs.restaurant.AddBox
+import com.ktu.foodie.navigation.tabs.restaurant.Products
 import com.ktu.foodie.navigation.tabs.restaurant.Settings
 
 @Composable
@@ -18,19 +20,15 @@ fun RestaurantNavHost(
 ) {
     NavHost(
         navController = bottomBarNavController,
-        route = Graph.CLIENT_NAVIGATION,
-        startDestination = NavItem.MysteryBox.route,
+        route = Graph.RESTAURANT_NAVIGATION,
+        startDestination = NavItem.AddBox.route,
         modifier = modifier
     ) {
-        composable(NavItem.MysteryBox.route) {
-            Column {
-
-            }
+        composable(NavItem.AddBox.route) {
+            AddBox()
         }
         composable(NavItem.Product.route) {
-            Column {
-
-            }
+            Products()
         }
         composable(NavItem.Settings.route) {
             Settings(logout = {logout()})

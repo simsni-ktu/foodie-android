@@ -23,13 +23,14 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.ktu.foodie.navigation.NavItem
 import com.ktu.foodie.navigation.graphs.RestaurantNavHost
+import com.ktu.foodie.ui.compoonents.TopBar
 import com.ktu.foodie.ui.theme.foodieGreen
 
 @Composable
 fun RestaurantMain(logout: () -> Unit) {
 
     val bottomBarNavController = rememberNavController()
-    val tabs = listOf(NavItem.MysteryBox, NavItem.Product, NavItem.Settings)
+    val tabs = listOf(NavItem.AddBox, NavItem.Product, NavItem.Settings)
 
     fun onTabChange(destination: String) {
         bottomBarNavController.navigate(destination) {
@@ -47,7 +48,8 @@ fun RestaurantMain(logout: () -> Unit) {
                 bottomBarNavController = bottomBarNavController,
                 tabs = tabs,
                 onTabChange = { onTabChange(it) })
-        }
+        },
+        topBar = { TopBar() }
     ) { paddingValues ->
         RestaurantNavHost(
             bottomBarNavController = bottomBarNavController,
