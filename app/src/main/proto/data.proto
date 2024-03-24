@@ -13,5 +13,5 @@ message User {
   string phone = 7;
   string address = 8;
   string token = 9;
+  string role = 10;
 }
-
