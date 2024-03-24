@@ -23,13 +23,11 @@ import com.ktu.foodie.R
 import com.ktu.foodie.ui.theme.foodieGreen
 
 @Composable
-fun TopBar(homeScreen: Boolean){
+fun TopBar(){
     Row(modifier = Modifier
         .fillMaxWidth()
         .height(64.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically){
-        Image(painter = painterResource(id = R.drawable.foodie_logo), contentDescription = null,)
-        if(homeScreen) {
-            Text("Foodie", fontWeight = FontWeight.Bold, color = foodieGreen, fontSize = 24.sp)
-        }
+        Image(painter = painterResource(id = R.drawable.foodie_logo), contentDescription = null)
+        Text("Foodie", fontWeight = FontWeight.Bold, color = foodieGreen, fontSize = 24.sp)
     }
 }
