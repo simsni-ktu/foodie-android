@@ -1,13 +1,23 @@
 package com.ktu.foodie.repository.auth
 
+import androidx.datastore.core.DataStore
 import com.ktu.foodie.api.BackendInterface
 import com.ktu.foodie.api.Resource
 import com.ktu.foodie.api.models.Message
-import com.ktu.foodie.api.models.User
 import com.ktu.foodie.api.models.UserCredentials
-import retrofit2.HttpException
+import kotlinx.coroutines.flow.Flow
+import ktu.foodie.proto.User
 
-class AuthRepositoryImpl(private val backendInterface: BackendInterface) : AuthRepository {
+class AuthRepositoryImpl(private val backendInterface: BackendInterface, private val userStore: DataStore<User>) : AuthRepository {
+
+    override fun getUserFromDataStore(): Flow<User> {
+        return userStore.data
+    }
+
+    override suspend fun updateUserStore(user: User?){
+        userStore.updateData { user ?: User() }
+    }
+
     override suspend fun login(userCredentials: UserCredentials): Resource<User> {
         val response = try {
             backendInterface.login(userCredentials = userCredentials)

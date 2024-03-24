@@ -1,8 +1,8 @@
 package com.ktu.foodie.api
 
 import com.ktu.foodie.api.models.Message
-import com.ktu.foodie.api.models.User
 import com.ktu.foodie.api.models.UserCredentials
+import ktu.foodie.proto.User
 import retrofit2.http.Body
 import retrofit2.http.POST
 
