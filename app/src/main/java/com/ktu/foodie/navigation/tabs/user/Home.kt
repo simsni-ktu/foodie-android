@@ -1,4 +1,4 @@
-package com.ktu.foodie.navigation.tabs
+package com.ktu.foodie.navigation.tabs.user
 
 import android.graphics.drawable.Icon
 import androidx.compose.foundation.layout.Arrangement
@@ -44,7 +44,7 @@ fun Home() {
     val categories = listOf("Sweets", "Healthy", "Fruits", "Bakery", "Vegetarian", "Dairy", "Dairy", "Dairy")
 
     Column {
-        TopBar(homeScreen = false)
+        TopBar()
         Column(
             modifier = Modifier
                 .fillMaxSize()

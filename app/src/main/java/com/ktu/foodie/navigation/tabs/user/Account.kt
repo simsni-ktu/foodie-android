@@ -1,4 +1,4 @@
-package com.ktu.foodie.navigation.tabs
+package com.ktu.foodie.navigation.tabs.user
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,7 +15,7 @@ import com.ktu.foodie.ui.compoonents.TopBar
 @Composable
 fun Account(logout:() -> Unit){
     Column {
-        TopBar(homeScreen = false)
+        TopBar()
         Column(
             modifier = Modifier
                 .fillMaxSize()

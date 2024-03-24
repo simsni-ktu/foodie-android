@@ -1,4 +1,4 @@
-package com.ktu.foodie.navigation.tabs
+package com.ktu.foodie.navigation.tabs.user
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,7 +19,7 @@ import com.ktu.foodie.ui.compoonents.TopBar
 @Composable
 fun Favorites() {
     Column {
-        TopBar(homeScreen = false)
+        TopBar()
         Column(
             modifier = Modifier
                 .fillMaxSize()

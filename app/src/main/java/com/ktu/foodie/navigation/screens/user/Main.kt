@@ -1,6 +1,5 @@
-package com.ktu.foodie.navigation
+package com.ktu.foodie.navigation.screens.user
 
-import android.util.Log
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,13 +21,18 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.ktu.foodie.navigation.graphs.HomeNavGraph
+import com.ktu.foodie.navigation.NavItem
+import com.ktu.foodie.navigation.graphs.HomeNavHost
 import com.ktu.foodie.ui.theme.foodieGreen
 
+
+typealias DetailId = String
+
+//fun Main(rootNavController: NavController, open: (DetailId) -> Unit) {
 @Composable
-fun Main(rootNavController: NavController) {
+fun Main(logout: () -> Unit) {
     val bottomBarNavController = rememberNavController()
-    val tabs = listOf(Tabs.Home, Tabs.Featured, Tabs.Discover, Tabs.Favorites, Tabs.Account)
+    val tabs = listOf(NavItem.Home, NavItem.Featured, NavItem.Discover, NavItem.Favorites, NavItem.Account)
 
     fun onTabChange(destination: String) {
         bottomBarNavController.navigate(destination) {
@@ -38,6 +42,7 @@ fun Main(rootNavController: NavController) {
             launchSingleTop = true
             restoreState = true
         }
+//        open("ID")
     }
 
     Scaffold(
@@ -48,22 +53,22 @@ fun Main(rootNavController: NavController) {
                 onTabChange = { onTabChange(it) })
         }
     ) { paddingValues ->
-        HomeNavGraph(
+        HomeNavHost(
             bottomBarNavController = bottomBarNavController,
-            rootNavController = rootNavController,
-            modifier = Modifier.padding(paddingValues)
-        )
+            logout = logout,
+            modifier = Modifier.padding(paddingValues))
     }
 }
 
 @Composable
 fun BottomBar(
     bottomBarNavController: NavController,
-    tabs: List<Tabs>,
+    tabs: List<NavItem>,
     onTabChange: (String) -> Unit
 ) {
     val navBackStackEntry by bottomBarNavController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+
     NavigationBar(
         tonalElevation = 8.dp,
         containerColor = foodieGreen,

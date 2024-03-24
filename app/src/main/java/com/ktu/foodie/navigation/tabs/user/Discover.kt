@@ -1,4 +1,4 @@
-package com.ktu.foodie.navigation.tabs
+package com.ktu.foodie.navigation.tabs.user
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
