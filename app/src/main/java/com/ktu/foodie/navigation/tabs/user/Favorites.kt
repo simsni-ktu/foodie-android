@@ -2,6 +2,7 @@ package com.ktu.foodie.navigation.tabs.user
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -22,13 +23,13 @@ fun Favorites() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
             .padding(start = 16.dp, end = 16.dp)
     ) {
         Spacer(modifier = Modifier.height(16.dp))
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(16.dp),
-            userScrollEnabled = false,
+            contentPadding = PaddingValues(bottom = 16.dp),
+            userScrollEnabled = true,
             modifier = Modifier.heightIn(max = 1000.dp)
         ) {
             items(6) {
