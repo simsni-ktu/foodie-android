@@ -1,11 +1,18 @@
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id ("com.google.dagger.hilt.android")
     id("org.jetbrains.kotlin.kapt")
     id("com.google.devtools.ksp")
+    id("com.squareup.wire") version "4.9.3"
 
 }
+
+wire {
+    kotlin {}
+}
+
 
 android {
     namespace = "com.ktu.foodie"
@@ -100,9 +107,7 @@ dependencies {
     implementation("com.squareup.wire:wire-runtime:4.9.3")
     implementation("com.squareup.wire:wire-moshi-adapter:4.9.3")
 
-    //Shared prefs
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-
-
+    //Datastore
+    implementation("androidx.datastore:datastore:1.0.0")
 
 }
